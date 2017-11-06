@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bartek.pluto.MenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"></View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pluto"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Volleyball Referee Assistant"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/newmatch"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:onClick="newMatch"
+                android:text="New Match"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/load"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:text="Load Match"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/settings"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:text="Settings"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/history"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:text="History"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/exit"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:text="Exit"
+                android:onClick="exit"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

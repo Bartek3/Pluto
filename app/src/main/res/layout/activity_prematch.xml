@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bartek.pluto.PrematchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="Data about new match:"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+            <EditText
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/nameA"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:hint="Name of first team"/>
+
+            <EditText
+                android:id="@+id/nameB"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:hint="Name of second team"/>
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:inputType="date"
+                android:textColorHint="@android:color/white"
+                android:hint="Date of match"/>
+
+            <EditText
+                android:id="@+id/place"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:hint="Place of match"/>
+
+            <Button
+                android:id="@+id/go"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorAccent"
+                android:onClick="go"
+                android:text="Go to match!"
+                android:textColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
