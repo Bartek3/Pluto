@@ -80,6 +80,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorAccent"
+                android:onClick="load"
                 android:text="Load Match"
                 android:textColor="@android:color/white" />
 

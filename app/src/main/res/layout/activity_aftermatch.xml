@@ -65,11 +65,10 @@
             android:id="@+id/result"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="0 : 0"
             android:textColor="@android:color/white"
-            android:textSize="80sp"
+            android:textSize="100sp"
             android:textStyle="bold" />
 
         <TextView
@@ -79,7 +78,6 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="@string/team_name"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -91,7 +89,6 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="@string/team_name"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -103,7 +100,6 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="@string/team_name"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -115,7 +111,6 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="@string/team_name"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -127,7 +122,6 @@
             android:layout_marginBottom="12dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="@string/team_name"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />

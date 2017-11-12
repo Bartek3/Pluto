@@ -63,27 +63,6 @@
                 android:textColorHint="@android:color/white"
                 android:hint="Name of second team"/>
 
-            <EditText
-                android:id="@+id/date"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@android:color/white"
-                android:inputType="date"
-                android:textColorHint="@android:color/white"
-                android:hint="Date of match"/>
-
-            <EditText
-                android:id="@+id/place"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:hint="Place of match"/>
-
             <Button
                 android:id="@+id/go"
                 android:layout_width="150dp"

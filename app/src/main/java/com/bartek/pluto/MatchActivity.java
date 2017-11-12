@@ -1,15 +1,16 @@
 package com.bartek.pluto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MatchActivity extends AppCompatActivity {
 
-
+    String teamAName;
+    String teamBName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,115 +18,87 @@ public class MatchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match);
 
         Intent preMatch = getIntent();
-        String teamAName = preMatch.getStringExtra("TeamAName");
-        String teamBName = preMatch.getStringExtra("TeamBName");
+        teamAName = preMatch.getStringExtra("TeamAName");
+        teamBName = preMatch.getStringExtra("TeamBName");
 
         TextView teamANameTV = findViewById(R.id.teamAName);
+            teamANameTV.setText(teamAName);
         TextView teamBNameTV = findViewById(R.id.teamBName);
+            teamBNameTV.setText(teamBName);
         TextView teamANameBisTV = findViewById(R.id.teamANameBis);
+            teamANameBisTV.setText(teamAName);
         TextView teamBNameBisTV = findViewById(R.id.teamBNameBis);
-
-        teamANameTV.setText(teamAName);
-        teamANameBisTV.setText(teamAName);
-
-        teamBNameTV.setText(teamBName);
-        teamBNameBisTV.setText(teamBName);
+            teamBNameBisTV.setText(teamBName);
     }
 
-    int gemsA;
-    int gemsB;
-    int setsA;
-    int setsB;
+    int[] actualPoints = new int[120];
     int[][] resultsOfSets = new int[5][2];
 
+    Match match = new Match(teamAName, teamBName, 0, 0, 0,0, actualPoints, resultsOfSets);
+
     public void gemForA(View view) {
-        gemsA += 1;
-        displayGemsA();
-        if (endOfSet(gemsA, gemsB, setsA, setsB)) {
-            setsA += 1;
-            displaySetsA();
-            addGemsToResults();
-            resetGems();
-            if (endOfMatch(setsA)) {
-                endOfMatchActivity();
-            }
-        }
+        match.pointForA();
+        displayPointsA();
+        displayPointsB();
+        displaySetsA();
+        endOfMatch();
     }
 
     public void gemForB(View view) {
-        gemsB += 1;
-        displayGemsB();
-        if (endOfSet(gemsB, gemsA, setsA, setsB)) {
-            setsB += 1;
-            displaySetsB();
-            addGemsToResults();
-            resetGems();
-            if (endOfMatch(setsB)) {
-                endOfMatchActivity();
-            }
+        match.pointForB();
+        displayPointsA();
+        displayPointsB();
+        displaySetsB();
+        endOfMatch();
+    }
+
+    public void save(View view) {
+
+    }
+
+    public void undo(View view) {
+        if (match.getPointsA() + match.getPointsB() == 0){
+            Toast.makeText(this, "You can't undo when teams has no points!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            match.undo();
+            displayPointsA();
+            displayPointsB();
         }
     }
 
-    public void displayGemsA() {
-        TextView gemsOfA = findViewById(R.id.gemsA);
-        gemsOfA.setText(String.valueOf(gemsA));
+    public void exit(View view) {
+        Intent exit = new Intent(this, MenuActivity.class);
+        finishAffinity();
+        startActivity(exit);
     }
 
-    public void displayGemsB() {
-        TextView gemsOfB = findViewById(R.id.gemsB);
-        gemsOfB.setText(String.valueOf(gemsB));
+    public void displayPointsA() {
+        TextView pointsA = findViewById(R.id.gemsA);
+        pointsA.setText(String.valueOf(match.getPointsA()));
+    }
+
+    public void displayPointsB() {
+        TextView pointsB = findViewById(R.id.gemsB);
+        pointsB.setText(String.valueOf(match.getPointsB()));
     }
 
     public void displaySetsA() {
-        TextView setsOfA = findViewById(R.id.setsA);
-        setsOfA.setText(String.valueOf(setsA));
+        TextView setsA = findViewById(R.id.setsA);
+        setsA.setText(String.valueOf(match.getSetsA()));
     }
 
     public void displaySetsB() {
-        TextView setsOfB = findViewById(R.id.setsB);
-        setsOfB.setText(String.valueOf(setsB));
+        TextView setsB = findViewById(R.id.setsB);
+        setsB.setText(String.valueOf(match.getSetsB()));
     }
 
-    public void resetGems() {
-        gemsA = 0;
-        gemsB = 0;
-        displayGemsA();
-        displayGemsB();
-    }
-
-    public boolean endOfSet(int gems1, int gems2, int setsA, int setsB) {
-        if (setsA + setsB != 4) {
-            if (gems1 >= 25 && gems1 - gems2 >= 2) {
-                Toast.makeText(this, "Set " + (1 + setsA + setsB) + ". has ended", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        } else if (gems1 >= 15 && gems1 - gems2 >= 2) {
-            return true;
+    public void endOfMatch(){
+        if (match.endOfMatch()){
+            Intent afterMatch = new Intent(this, AftermatchActivity.class);
+            afterMatch.putExtra("Match", match);
+            finishAffinity();
+            startActivity(afterMatch);
         }
-        return false;
-    }
-
-    public void addGemsToResults(){
-        resultsOfSets[setsA+setsB-1][0] = gemsA;
-        resultsOfSets[setsA+setsB-1][1] = gemsB;
-    }
-
-    private static boolean endOfMatch(int sets) {
-        if (sets == 3) {
-            return true;
-        } else return false;
-    }
-
-    private void endOfMatchActivity() {
-        Intent afterMatch = new Intent(this, AftermatchActivity.class);
-
-        Intent preMatch = getIntent();
-        String teamAName = preMatch.getStringExtra("TeamAName");
-        String teamBName = preMatch.getStringExtra("TeamBName");
-        String result = (setsA + ":" + setsB);
-
-        Match thisMatch = new Match(teamAName, teamBName, null, null, result, resultsOfSets);
-        afterMatch.putExtra("Match", thisMatch);
-        startActivity(afterMatch);
     }
 }

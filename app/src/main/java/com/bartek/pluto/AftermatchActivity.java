@@ -1,10 +1,7 @@
 package com.bartek.pluto;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class AftermatchActivity extends AppCompatActivity {
 
@@ -13,10 +10,7 @@ public class AftermatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aftermatch);
 
-        Intent afterMatch = getIntent();
-        Match thisMatch = (Match) afterMatch.getSerializableExtra("Match");
-
-        TextView teamA = findViewById(R.id.teamAName);
+/*        TextView teamA = findViewById(R.id.teamAName);
         TextView teamB = findViewById(R.id.teamBName);
         TextView result = findViewById(R.id.result);
         TextView set1results = findViewById(R.id.set1);
@@ -29,7 +23,7 @@ public class AftermatchActivity extends AppCompatActivity {
 
         teamA.setText(thisMatch.getTeamAName());
         teamB.setText(thisMatch.getTeamBName());
-        result.setText(thisMatch.getResult());
+        result.setText("HAHA");
         set1results.setText(String.valueOf(res[0][0]) + " : " + String.valueOf(res[0][1]));
         set2results.setText(String.valueOf(res[1][0]) + " : " +  String.valueOf(res[1][1]));
         set3results.setText(String.valueOf(res[2][0]) + " : " +  String.valueOf(res[2][1]));
@@ -41,6 +35,6 @@ public class AftermatchActivity extends AppCompatActivity {
             }
         }
 
-        Toast.makeText(this, "Match has ended", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Match has ended", Toast.LENGTH_SHORT).show();*/
     }
 }

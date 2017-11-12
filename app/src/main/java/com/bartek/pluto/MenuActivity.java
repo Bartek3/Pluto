@@ -1,8 +1,8 @@
 package com.bartek.pluto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MenuActivity extends AppCompatActivity {
@@ -18,8 +18,13 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(goToPrematch);
     }
 
+    public void load(View view){
+
+    }
+
     public void exit(View view){
         finishAffinity();
         System.exit(0);
     }
+
 }
