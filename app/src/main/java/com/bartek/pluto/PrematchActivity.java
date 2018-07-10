@@ -28,6 +28,7 @@ public class PrematchActivity extends AppCompatActivity {
         if (namesExceptions(nameA) && namesExceptions(nameB)){
             newMatch.putExtra("TeamAName", nameA);
             newMatch.putExtra("TeamBName", nameB);
+            newMatch.putExtra("Marker", "new");
             startActivity(newMatch);
         }
     }
@@ -39,7 +40,7 @@ public class PrematchActivity extends AppCompatActivity {
             consent = false;
         }
         else if (name.length() > 20) {
-            Toast.makeText(this, "Names of teams must have at least 20 chars!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Names of teams must have at most 20 chars!", Toast.LENGTH_SHORT).show();
             consent = false;
         }
         return consent;

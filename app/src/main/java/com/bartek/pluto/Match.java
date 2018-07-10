@@ -2,7 +2,7 @@ package com.bartek.pluto;
 
 import java.io.Serializable;
 
-public class Match implements Serializable {
+class Match implements Serializable {
 
     private String teamAName;
     private String teamBName;
@@ -13,7 +13,7 @@ public class Match implements Serializable {
     private int[] actualSetPoints;
     private int[][] resultsOfSets;
 
-    public Match(String teamAName,
+    Match(String teamAName,
                  String teamBName,
                  int pointsA,
                  int pointsB,
@@ -31,37 +31,63 @@ public class Match implements Serializable {
         this.resultsOfSets = resultsOfSets;
     }
 
-    public String getTeamAName() {return teamAName;}
-    public String getTeamBName() {return teamBName;}
-    public int getPointsA() { return pointsA; }
-    public int getPointsB() {return pointsB;}
-    public int getSetsA() {return setsA;}
-    public int getSetsB() {return setsB;}
-    public int[] getActualSetPoints() {return actualSetPoints;}
-    public int[][] getResultsOfSets() {return resultsOfSets;}
+    String getTeamAName() {
+        return teamAName;
+    }
 
-    public void pointForA() {
+    String getTeamBName() {
+        return teamBName;
+    }
+
+    int getPointsA() {
+        return pointsA;
+    }
+
+    int getPointsB() {
+        return pointsB;
+    }
+
+    int getSetsA() {
+        return setsA;
+    }
+
+    int getSetsB() {
+        return setsB;
+    }
+
+    int[][] getResultsOfSets() {
+        return resultsOfSets;
+    }
+
+    void setTeamAName(String name) {
+        teamAName = name;
+    }
+
+    void setTeamBName(String name) {
+        teamBName = name;
+    }
+
+    void pointForA() {
         actualSetPoints[pointsA + pointsB] = 1;
         pointsA += 1;
         endOfSet();
     }
 
-    public void pointForB() {
+    void pointForB() {
         actualSetPoints[pointsA + pointsB] = 2;
         pointsB += 1;
         endOfSet();
     }
 
-    public void undo(){
-        if (actualSetPoints[pointsA + pointsB - 1] == 1){
+    void undo() {
+        if (actualSetPoints[pointsA + pointsB - 1] == 1) {
             pointsA -= 1;
-        }
-        else if (actualSetPoints[pointsA + pointsB - 1] == 2){
+        } else if (actualSetPoints[pointsA + pointsB - 1] == 2) {
             pointsB -= 1;
         }
     }
 
-    private void resetPoints(){
+    private void resetPoints() {
         resultsOfSets[setsA + setsB][0] = pointsA;
         resultsOfSets[setsA + setsB][1] = pointsB;
         pointsA = 0;
@@ -69,17 +95,28 @@ public class Match implements Serializable {
     }
 
     private void endOfSet() {
-        if (pointsA >= 25 & pointsA - pointsB >= 2) {
-            resetPoints();
-            setsA += 1;
-        }
-        if (pointsB >= 25 & pointsB - pointsA >= 2) {
-            resetPoints();
-            setsB += 1;
+        if (setsA + setsB == 4) {
+            if (pointsA >= 15 & pointsA - pointsB >= 2) {
+                resetPoints();
+                setsA += 1;
+            }
+            if (pointsB >= 15 & pointsB - pointsA >= 2) {
+                resetPoints();
+                setsB += 1;
+            }
+        } else {
+            if (pointsA >= 25 & pointsA - pointsB >= 2) {
+                resetPoints();
+                setsA += 1;
+            }
+            if (pointsB >= 25 & pointsB - pointsA >= 2) {
+                resetPoints();
+                setsB += 1;
+            }
         }
     }
 
-    public boolean endOfMatch(){
+    public boolean endOfMatch() {
         return setsA == 3 || setsB == 3;
     }
 }
