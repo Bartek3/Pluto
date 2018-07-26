@@ -15,8 +15,6 @@ public class PrematchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prematch);
     }
 
-
-
     public void go(View view){
         Intent newMatch = new Intent(this, MatchActivity.class);
 

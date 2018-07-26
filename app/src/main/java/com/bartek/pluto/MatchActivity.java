@@ -53,8 +53,6 @@ public class MatchActivity extends AppCompatActivity {
             teamBNameBisTV.setText(teamBName);
     }
 
-    //Match match = new Match(teamAName, teamBName, 0, 0, 0,0, actualPoints, resultsOfSets);
-
     public void gemForA(View view) {
         match.pointForA();
         displayPointsA();
@@ -136,6 +134,7 @@ public class MatchActivity extends AppCompatActivity {
 
             Bundle bundle = new Bundle();
             bundle.putSerializable("match", match);
+            bundle.putBoolean("endOfMatch", true);
             afterMatch.putExtras(bundle);
 
             finishAffinity();

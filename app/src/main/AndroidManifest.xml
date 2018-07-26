@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".PrematchActivity" />
         <activity android:name=".MatchActivity" />
-        <activity android:name=".AftermatchActivity"></activity>
+        <activity android:name=".AftermatchActivity" />
+        <activity android:name=".HistoryActivity"></activity>
     </application>
 
 </manifest>

@@ -101,6 +101,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorAccent"
+                android:onClick="history"
                 android:text="History"
                 android:textColor="@android:color/white" />
 
@@ -111,8 +112,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorAccent"
-                android:text="Exit"
                 android:onClick="exit"
+                android:text="Exit"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>

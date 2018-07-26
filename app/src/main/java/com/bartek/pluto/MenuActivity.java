@@ -37,6 +37,11 @@ public class MenuActivity extends AppCompatActivity {
             Toast.makeText(this, "Nothing to load", Toast.LENGTH_SHORT).show();}
     }
 
+    public void history(View view){
+        Intent goToHistory = new Intent(this, HistoryActivity.class);
+        startActivity(goToHistory);
+    }
+
     public void exit(View view){
         finishAffinity();
         System.exit(0);

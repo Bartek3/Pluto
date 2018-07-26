@@ -7,7 +7,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 public class AftermatchActivity extends AppCompatActivity {
+
+    HistoryDatabaseHelper db = new HistoryDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +19,17 @@ public class AftermatchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_aftermatch);
 
         Match match = (Match) getIntent().getSerializableExtra("match");
+        Boolean endOfMatch = getIntent().getBooleanExtra("endOfMatch", false);
 
         if (match != null) {
+
+            if (endOfMatch) {
+                Gson gson = new Gson();
+                String json = gson.toJson(match);
+                db.insertData(json);
+                Toast.makeText(this, "Match has ended", Toast.LENGTH_SHORT).show();
+            }
+
             TextView teamA = findViewById(R.id.teamAName);
             TextView teamB = findViewById(R.id.teamBName);
             TextView result = findViewById(R.id.result);
@@ -43,8 +56,6 @@ public class AftermatchActivity extends AppCompatActivity {
                     set5results.setText(String.valueOf(res[4][0]) + " : " + String.valueOf(res[4][1]));
                 }
             }
-
-            Toast.makeText(this, "Match has ended", Toast.LENGTH_SHORT).show();
         }
 
 

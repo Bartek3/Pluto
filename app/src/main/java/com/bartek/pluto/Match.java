@@ -14,13 +14,13 @@ class Match implements Serializable {
     private int[][] resultsOfSets;
 
     Match(String teamAName,
-                 String teamBName,
-                 int pointsA,
-                 int pointsB,
-                 int setsA,
-                 int setsB,
-                 int[] actualSetPoints,
-                 int[][] resultsOfSets) {
+          String teamBName,
+          int pointsA,
+          int pointsB,
+          int setsA,
+          int setsB,
+          int[] actualSetPoints,
+          int[][] resultsOfSets) {
         this.teamAName = teamAName;
         this.teamBName = teamBName;
         this.pointsA = pointsA;
