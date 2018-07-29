@@ -50,15 +50,13 @@ public class AftermatchActivity extends AppCompatActivity {
             set2results.setText(String.valueOf(res[1][0]) + " : " + String.valueOf(res[1][1]));
             set3results.setText(String.valueOf(res[2][0]) + " : " + String.valueOf(res[2][1]));
 
-            if (res[3][0] > 0 && res[3][1] > 0) {
+            if (res[3][0] > 0 || res[3][1] > 0) {
                 set4results.setText(String.valueOf(res[3][0]) + " : " + String.valueOf(res[3][1]));
-                if (res[4][0] > 0 && res[4][1] > 0) {
+                if (res[4][0] > 0 || res[4][1] > 0) {
                     set5results.setText(String.valueOf(res[4][0]) + " : " + String.valueOf(res[4][1]));
                 }
             }
         }
-
-
     }
 
     public void go(View view) {
