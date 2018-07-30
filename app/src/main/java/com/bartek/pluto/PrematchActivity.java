@@ -15,7 +15,7 @@ public class PrematchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prematch);
     }
 
-    public void go(View view){
+    public void go(View view) {
         Intent newMatch = new Intent(this, MatchActivity.class);
 
         TextView teamAName = findViewById(R.id.nameA);
@@ -23,7 +23,7 @@ public class PrematchActivity extends AppCompatActivity {
         String nameA = teamAName.getText().toString();
         String nameB = teamBName.getText().toString();
 
-        if (namesExceptions(nameA) && namesExceptions(nameB)){
+        if (namesExceptions(nameA) && namesExceptions(nameB)) {
             newMatch.putExtra("TeamAName", nameA);
             newMatch.putExtra("TeamBName", nameB);
             newMatch.putExtra("Marker", "new");
@@ -36,8 +36,7 @@ public class PrematchActivity extends AppCompatActivity {
         if (name.length() == 0) {
             Toast.makeText(this, "Enter names of teams!", Toast.LENGTH_SHORT).show();
             consent = false;
-        }
-        else if (name.length() > 20) {
+        } else if (name.length() > 20) {
             Toast.makeText(this, "Names of teams must have at most 20 chars!", Toast.LENGTH_SHORT).show();
             consent = false;
         }

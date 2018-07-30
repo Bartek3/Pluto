@@ -25,7 +25,7 @@ public class MatchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match);
 
         Intent preMatch = getIntent();
-        if (preMatch.getStringExtra("Marker").equals("Load")){
+        if (preMatch.getStringExtra("Marker").equals("Load")) {
             Gson gson = new Gson();
             json = preMatch.getStringExtra("match");
             match = gson.fromJson(json, Match.class);
@@ -36,21 +36,20 @@ public class MatchActivity extends AppCompatActivity {
             displayPointsB();
             displaySetsA();
             displaySetsB();
-        }
-        else {
+        } else {
             teamAName = preMatch.getStringExtra("TeamAName");
             teamBName = preMatch.getStringExtra("TeamBName");
-            match = new Match(teamAName, teamBName, 0, 0, 0,0, actualPoints, resultsOfSets);
+            match = new Match(teamAName, teamBName, 0, 0, 0, 0, actualPoints, resultsOfSets);
         }
 
-            TextView teamANameTV = findViewById(R.id.teamAName);
-            teamANameTV.setText(teamAName);
-            TextView teamBNameTV = findViewById(R.id.teamBName);
-            teamBNameTV.setText(teamBName);
-            TextView teamANameBisTV = findViewById(R.id.teamANameBis);
-            teamANameBisTV.setText(teamAName);
-            TextView teamBNameBisTV = findViewById(R.id.teamBNameBis);
-            teamBNameBisTV.setText(teamBName);
+        TextView teamANameTV = findViewById(R.id.teamAName);
+        teamANameTV.setText(teamAName);
+        TextView teamBNameTV = findViewById(R.id.teamBName);
+        teamBNameTV.setText(teamBName);
+        TextView teamANameBisTV = findViewById(R.id.teamANameBis);
+        teamANameBisTV.setText(teamAName);
+        TextView teamBNameBisTV = findViewById(R.id.teamBNameBis);
+        teamBNameBisTV.setText(teamBName);
     }
 
     public void gemForA(View view) {
@@ -86,10 +85,9 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     public void undo(View view) {
-        if (match.getPointsA() + match.getPointsB() == 0){
+        if (match.getPointsA() + match.getPointsB() == 0) {
             Toast.makeText(this, "You can't undo when teams has no points!", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             match.undo();
             displayPointsA();
             displayPointsB();
@@ -122,8 +120,8 @@ public class MatchActivity extends AppCompatActivity {
         setsB.setText(String.valueOf(match.getSetsB()));
     }
 
-    public void endOfMatch(){
-        if (match.endOfMatch()){
+    public void endOfMatch() {
+        if (match.endOfMatch()) {
             TextView teamAName = findViewById(R.id.teamAName);
             TextView teamBName = findViewById(R.id.teamBName);
 

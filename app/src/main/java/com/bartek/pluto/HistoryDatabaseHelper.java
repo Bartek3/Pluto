@@ -17,12 +17,12 @@ public class HistoryDatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_2 = "GSON";
 
     public HistoryDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, GSON TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY, GSON TEXT NOT NULL)");
     }
 
     @Override
@@ -44,6 +44,15 @@ public class HistoryDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return res;
+    }
+
+    public void deleteRow(int position) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = getData();
+        cursor.moveToPosition(position);
+        int id = cursor.getInt(cursor.getColumnIndex("ID"));
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE ID ='" + String.valueOf(id) + "'");
+        cursor.close();
     }
 
     public ArrayList<Match> getMatchesFromDB() {

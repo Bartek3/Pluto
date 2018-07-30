@@ -15,14 +15,16 @@ import java.util.ArrayList;
 
 public class MatchAdapter extends ArrayAdapter<Match> {
 
+    ArrayList<Match> matches = new ArrayList<>();
+
     public MatchAdapter(Activity context, ArrayList<Match> matches) {
         super(context, 0, matches);
+        this.matches = matches;
     }
-
 
     @Override
     @Nullable
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View listItemView = convertView;
 
@@ -53,6 +55,17 @@ public class MatchAdapter extends ArrayAdapter<Match> {
                 afterMatch.putExtras(bundle);
 
                 view.getContext().startActivity(afterMatch);
+            }
+        });
+
+        final LinearLayout trash = listItemView.findViewById(R.id.trash);
+        trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HistoryDatabaseHelper db = new HistoryDatabaseHelper(getContext());
+                db.deleteRow(position);
+                matches.remove(position);
+                MatchAdapter.this.notifyDataSetChanged();
             }
         });
 
